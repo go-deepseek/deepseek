@@ -12,6 +12,7 @@ const (
 	ResponseFormatJsonObject = "json_object"
 )
 
+// ChatCompletionsRequest is request payload for `POST /chat/completions` API.
 type ChatCompletionsRequest struct {
 	Messages         []*Message      `json:"messages"`
 	Model            string          `json:"model"`

@@ -1,12 +1,18 @@
-# Go Client - Deepseek API
+# Go-Deepseek -- Go Client for [Deepseek API](https://api-docs.deepseek.com/)
 
-### Why yet another Go client?
+## Demo
+
+Left side -- https://chat.deepseek.com/
+
+Right side -- [deepseek-demo](https://github.com/go-deepseek/deepseek-demo)
+
+https://github.com/user-attachments/assets/baa05145-a13c-460d-91ce-90129c5b32d7
+
+## Why yet another Go client?
 
 We needed to call the DeepSeek API from one of our Go services but couldn't find a complete and reliable Go client, so we built our own.
 
-### Why this Go client is best?
-
-Because this Go client is not only complete and reliable but also simple and performant.
+## Why this Go client is better?
 
 - **Complete** – It offers full support for all APIs, including their complete request and response payloads. (Note: Beta feature support coming soon.)
 
@@ -20,14 +26,6 @@ Because this Go client is not only complete and reliable but also simple and per
 ```
 go get github.com/go-deepseek/deepseek
 ```
-
-## Demo
-
-Left side -- https://chat.deepseek.com/
-
-Right side -- [deepseek-demo](https://github.com/go-deepseek/deepseek-demo)
-
-https://github.com/user-attachments/assets/baa05145-a13c-460d-91ce-90129c5b32d7
 
 ## Usage
 
@@ -70,3 +68,9 @@ func main() {
 ## Examples
 
 Please check the [examples](examples/) directory, which showcases each feature of this client.
+
+![examples](docs/examples_directory.png)
+
+## Buy me a GitHub Star ⭐
+
+If you like our work then please give github star to this repo. 😊

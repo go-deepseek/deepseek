@@ -17,15 +17,27 @@ const (
 )
 
 type Client interface {
+	// CallChatCompletionsChat calls chat api with model=deepseek-chat and stream=false.
+	// It returns response from DeepSeek-V3 model.
 	CallChatCompletionsChat(ctx context.Context, chatReq *request.ChatCompletionsRequest) (*response.ChatCompletionsResponse, error)
+
+	// CallChatCompletionsReasoner calls chat api with model=deepseek-reasoner and stream=false.
+	// It returns response from DeepSeek-R1 model.
 	CallChatCompletionsReasoner(ctx context.Context, chatReq *request.ChatCompletionsRequest) (*response.ChatCompletionsResponse, error)
 
+	// StreamChatCompletionsChat calls chat api with model=deepseek-chat and stream=true.
+	// It returns response from DeepSeek-V3 model.
 	StreamChatCompletionsChat(ctx context.Context, chatReq *request.ChatCompletionsRequest) (response.StreamReader, error)
+
+	// StreamChatCompletionsChat calls chat api with model=deepseek-reasoner and stream=true.
+	// It returns response from DeepSeek-R1 model.
 	StreamChatCompletionsReasoner(ctx context.Context, chatReq *request.ChatCompletionsRequest) (response.StreamReader, error)
 
+	// PingChatCompletions is a ping to check go deepseek client is working fine.
 	PingChatCompletions(ctx context.Context, inputMessage string) (outputMessge string, err error)
 }
 
+// NewClient creates deeseek client with given api key.
 func NewClient(apiKey string) (Client, error) {
 	config := config.Config{
 		ApiKey:         apiKey,
@@ -34,6 +46,7 @@ func NewClient(apiKey string) (Client, error) {
 	return NewClientWithConfig(config)
 }
 
+// NewClient creates deeseek client with given client config.
 func NewClientWithConfig(config config.Config) (Client, error) {
 	return client.NewClient(config)
 }

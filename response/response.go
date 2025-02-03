@@ -1,5 +1,6 @@
 package response
 
+// ChatCompletionsResponse is response payload for `POST /chat/completions` API.
 type ChatCompletionsResponse struct {
 	Id                string    `json:"id"`
 	Choices           []*Choice `json:"choices"`
