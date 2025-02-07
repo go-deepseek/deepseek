@@ -10,6 +10,7 @@ import (
 )
 
 func TestValidateChatCompletionsRequest(t *testing.T) {
+	temp := float32(2)
 	req := &request.ChatCompletionsRequest{
 		Messages: []*request.Message{
 			{
@@ -29,7 +30,7 @@ func TestValidateChatCompletionsRequest(t *testing.T) {
 		StreamOptions: &request.StreamOptions{
 			IncludeUsage: true,
 		},
-		Temperature: 2,
+		Temperature: &temp,
 		// TopP: nil,	// TODO: VN -- pass non nil
 	}
 	err := request.ValidateChatCompletionsRequest(req)
