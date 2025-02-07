@@ -30,7 +30,7 @@ func GetApiKey() string {
 }
 
 func TestPingChatCompletions(t *testing.T) {
-	client, err := deepseek.NewClient(GetApiKey())
+	client, err := deepseek.NewClient(GetApiKey(), "https://custom.deepseek.com")
 	require.NoError(t, err)
 
 	output, err := client.PingChatCompletions(context.Background(), "Hello")
@@ -43,7 +43,7 @@ func TestCallChat(t *testing.T) {
 	// ts := NewFakeServer("testdata/01_resp_basic_chat.json")
 	// defer ts.Close()
 
-	client, err := deepseek.NewClient(GetApiKey())
+	client, err := deepseek.NewClient(GetApiKey(), "https://custom.deepseek.com")
 	require.NoError(t, err)
 
 	reqJson, err := testdata.ReadFile("testdata/01_req_basic_chat.json")
@@ -64,7 +64,7 @@ func TestStreamChat(t *testing.T) {
 	// ts := NewFakeServer("testdata/02_resp_stream_chat.json")
 	// defer ts.Close()
 
-	client, err := deepseek.NewClient(GetApiKey())
+	client, err := deepseek.NewClient(GetApiKey(), "https://custom.deepseek.com")
 	require.NoError(t, err)
 
 	reqJson, err := testdata.ReadFile("testdata/02_req_stream_chat.json")
@@ -96,7 +96,7 @@ func TestCallReasoner(t *testing.T) {
 	// ts := NewFakeServer("testdata/03_resp_basic_reasoner.json")
 	// defer ts.Close()
 
-	client, err := deepseek.NewClient(GetApiKey())
+	client, err := deepseek.NewClient(GetApiKey(), "https://custom.deepseek.com")
 	require.NoError(t, err)
 
 	reqJson, err := testdata.ReadFile("testdata/03_req_basic_reasoner.json")
@@ -118,6 +118,7 @@ func TestStreamReasoner(t *testing.T) {
 	config := config.Config{
 		ApiKey:         GetApiKey(),
 		TimeoutSeconds: 120,
+		BaseURL:        "https://custom.deepseek.com",
 	}
 	client, err := deepseek.NewClientWithConfig(config)
 	require.NoError(t, err)

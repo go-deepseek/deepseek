@@ -38,9 +38,10 @@ type Client interface {
 }
 
 // NewClient returns deeseek client which uses given deepseek API key.
-func NewClient(apiKey string) (Client, error) {
+func NewClient(apiKey string, baseURL string) (Client, error) {
 	config := NewConfigWithDefaults()
 	config.ApiKey = apiKey
+	config.BaseURL = baseURL
 	return NewClientWithConfig(config)
 }
 
