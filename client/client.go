@@ -19,6 +19,7 @@ import (
 type Client struct { // TODO: VN -- move to internal pkg
 	*http.Client
 	config.Config
+	BaseURL string
 }
 
 func NewClient(config config.Config) (*Client, error) {
@@ -34,6 +35,7 @@ func NewClient(config config.Config) (*Client, error) {
 		Client: &http.Client{
 			Timeout: time.Second * time.Duration(config.TimeoutSeconds),
 		},
+		BaseURL: config.BaseURL,
 	}
 	return c, nil
 }
@@ -185,7 +187,7 @@ func (c *Client) PingChatCompletions(ctx context.Context, inputMessage string) (
 }
 
 func (c *Client) do(ctx context.Context, chatReq *request.ChatCompletionsRequest) (io.ReadCloser, error) {
-	url := fmt.Sprintf(`%s/chat/completions`, internal.BASE_URL)
+	url := fmt.Sprintf(`%s/chat/completions`, c.BaseURL)
 
 	in := new(bytes.Buffer)
 	err := json.NewEncoder(in).Encode(chatReq)
