@@ -24,4 +24,4 @@ jobs:
       uses: actions/checkout@v2
     
     - name: Test
-      run: DEEPSEEK_API_KEY=${{secrets.DEEPSEEK_API_KEY}} go test ./... -count=1 -timeout=600s
+      run: DEEPSEEK_API_KEY=${{secrets.DEEPSEEK_API_KEY}} go test ./... -count=1 -timeout=600s -v
