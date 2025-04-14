@@ -35,7 +35,7 @@ type Client interface {
 	StreamChatCompletionsReasoner(ctx context.Context, chatReq *request.ChatCompletionsRequest) (response.StreamReader, error)
 
 	// PingChatCompletions is a ping to check go deepseek client is working fine.
-	PingChatCompletions(ctx context.Context, inputMessage string) (outputMessge string, err error)
+	PingChatCompletions(ctx context.Context, inputMessage string) (outputMessage string, err error)
 }
 
 // NewClient returns deeseek client which uses given deepseek API key.

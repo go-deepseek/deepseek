@@ -14,7 +14,7 @@ type Callbacks struct {
 	StreamChatCompletionsChatCallback     func(ctx context.Context, chatReq *request.ChatCompletionsRequest) (response.StreamReader, error)
 	StreamChatCompletionsReasonerCallback func(ctx context.Context, chatReq *request.ChatCompletionsRequest) (response.StreamReader, error)
 
-	PingChatCompletionsCallback func(ctx context.Context, inputMessage string) (outputMessge string, err error)
+	PingChatCompletionsCallback func(ctx context.Context, inputMessage string) (outputMessage string, err error)
 }
 
 type FakeCallbackClient struct {
@@ -56,7 +56,7 @@ func (c *FakeCallbackClient) StreamChatCompletionsReasoner(ctx context.Context, 
 	return c.callbacks.StreamChatCompletionsReasonerCallback(ctx, chatReq)
 }
 
-func (c *FakeCallbackClient) PingChatCompletions(ctx context.Context, inputMessage string) (outputMessge string, err error) {
+func (c *FakeCallbackClient) PingChatCompletions(ctx context.Context, inputMessage string) (outputMessage string, err error) {
 	if c.callbacks.PingChatCompletionsCallback == nil {
 		panic("err: PingChatCompletionsCallback is nil")
 	}
